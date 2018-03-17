@@ -28,11 +28,12 @@ class SensorService : Service(), SensorEventListener {
     private var triggered = false
 
     private lateinit var locationManager: LocationManager
+    private lateinit var locationProvider: String
 
     // Updated while driving, last location value before a crash is sent to the API
     private lateinit var currLocation: Location
 
-    val locationListener = object : LocationListener {
+    private val locationListener = object : LocationListener {
         override fun onLocationChanged(location: Location) {
             updateLocation(location)
         }
@@ -53,10 +54,17 @@ class SensorService : Service(), SensorEventListener {
         super.onCreate()
 
         locationManager = getSystemService(android.content.Context.LOCATION_SERVICE) as android.location.LocationManager
+        val enabledProviders = locationManager.getProviders(true)
+
+        if(enabledProviders.contains(LocationManager.GPS_PROVIDER)) {
+            locationProvider = LocationManager.GPS_PROVIDER
+        } else {
+            locationProvider = LocationManager.NETWORK_PROVIDER
+        }
 
         // Permissions already checked in HomeActivity, necessary redundancy
         try {
-            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0.toFloat(), locationListener)
+            locationManager.requestLocationUpdates(locationProvider, 0, 0.toFloat(), locationListener)
         } catch (e: SecurityException) {
             Log.d("PERMISSION", "Permissions are wrong")
         }
@@ -135,7 +143,6 @@ class SensorService : Service(), SensorEventListener {
     }
 
     private fun updateLocation(location: Location) {
-        Log.d("currLocation", location.toString())
         this.currLocation = location
     }
 }

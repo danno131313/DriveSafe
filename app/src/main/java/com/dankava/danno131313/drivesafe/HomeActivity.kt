@@ -29,10 +29,13 @@ class HomeActivity : AppCompatActivity() {
         // Request location permissions for app (should only happen first time using app)
         if(checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED || checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION), 0)
+            finish()
+            startActivity(intent)
         }
 
-        // Disallow use of app if no location services are enabled
         locationManager = getSystemService(android.content.Context.LOCATION_SERVICE) as android.location.LocationManager
+
+        // Disallow use of app if no location services are enabled
         if (!locationEnabled()) {
             showLocationAlert()
         }
@@ -63,11 +66,15 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun startDriving() {
-        val intent = Intent(this, DrivingActivity::class.java)
-        val service = Intent(this, SensorService::class.java)
-        SensorService.stopService = false
-        startService(service)
-        startActivity(intent)
+        if (locationEnabled()) {
+            val intent = Intent(this, DrivingActivity::class.java)
+            val service = Intent(this, SensorService::class.java)
+            SensorService.stopService = false
+            startService(service)
+            startActivity(intent)
+        } else {
+            showLocationAlert()
+        }
     }
 
     private fun getNewToken(prefs: SharedPreferences, authCode: String) {
@@ -138,6 +145,7 @@ class HomeActivity : AppCompatActivity() {
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
             })
+        dialog.setCancelable(false)
         dialog.show()
     }
 
