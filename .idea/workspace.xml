@@ -22,7 +22,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="41008f39-2186-4c8c-99e7-0652c5554652" name="Default" comment="add alert sound to crash activity, add app description on home activity, clean up code">
+    <list default="true" id="41008f39-2186-4c8c-99e7-0652c5554652" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/resourceHashesCache.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/resourceHashesCache.bin" />
@@ -32,13 +32,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/dankava/danno131313/drivesafe/CrashActivity.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/dankava/danno131313/drivesafe/CrashActivity.kt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/dankava/danno131313/drivesafe/HomeActivity.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/dankava/danno131313/drivesafe/HomeActivity.kt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/dankava/danno131313/drivesafe/SensorService.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/dankava/danno131313/drivesafe/SensorService.kt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -110,11 +105,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_home.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="activity_home.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml">
           <provider editor-type-id="text-editor">
             <state relative-caret-position="380">
               <caret line="20" column="57" lean-forward="false" selection-start-line="20" selection-start-column="57" selection-end-line="20" selection-end-column="57" />
+              <folding />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="android-designer2">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_crash.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_crash.xml">
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="6" column="51" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -146,16 +154,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="styles.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
@@ -170,7 +168,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dankava/danno131313/drivesafe/HomeActivity.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="720">
-              <caret line="150" column="64" lean-forward="true" selection-start-line="150" selection-start-column="64" selection-end-line="150" selection-end-column="64" />
+              <caret line="150" column="64" lean-forward="false" selection-start-line="150" selection-start-column="64" selection-end-line="150" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -2244,7 +2242,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521316799976" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521317059926" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2292,7 +2290,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521316799976" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521317059926" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2475,7 +2473,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521316799977" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521317059927" />
       </method>
     </configuration>
     <list size="1">
@@ -2556,12 +2554,18 @@
       <option name="project" value="LOCAL" />
       <updated>1521272759593</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add alert sound to crash activity, add app description on home activity, clean up code">
+      <created>1521316805664</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1521316805664</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="2" width="962" height="1079" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2580,7 +2584,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20208333" sideWeight="0.35897437" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26973686" sideWeight="0.4937888" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26973686" sideWeight="0.4937888" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2853,17 +2857,6 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dankava/danno131313/drivesafe/TestActivity.kt" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dankava/danno131313/drivingmode/EmergencyActivity.kt" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_emergency2.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_crash.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="51" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -3007,7 +3000,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dankava/danno131313/drivesafe/HomeActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="720">
-          <caret line="150" column="64" lean-forward="true" selection-start-line="150" selection-start-column="64" selection-end-line="150" selection-end-column="64" />
+          <caret line="150" column="64" lean-forward="false" selection-start-line="150" selection-start-column="64" selection-end-line="150" selection-end-column="64" />
           <folding />
         </state>
       </provider>
@@ -3034,6 +3027,17 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="380">
           <caret line="20" column="57" lean-forward="false" selection-start-line="20" selection-start-column="57" selection-end-line="20" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_crash.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="51" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="51" />
           <folding />
         </state>
       </provider>
