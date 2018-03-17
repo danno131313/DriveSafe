@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dankava.danno131313.drivesafe.EmergencyActivity">
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="0dp"
+        android:layout_height="147dp"
+        android:background="@android:color/holo_red_dark"
+        android:gravity="center_vertical"
+        android:text="CONTACTING POLICE!"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ng.max.slideview.SlideView
+        android:id="@+id/slideView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="136dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.263"
+        app:sv_animateSlideText="true"
+        app:sv_strokeColor="@android:color/black"
+        app:sv_buttonBackgroundColor="@android:color/holo_orange_light"
+        app:sv_buttonImage="@drawable/sv_ic_chevron_double_right"
+        app:sv_slideBackgroundColor="@android:color/darker_gray"
+        app:sv_slideText="@string/cancel"
+        app:sv_slideTextColor="@android:color/white" />
+
+</android.support.constraint.ConstraintLayout>
