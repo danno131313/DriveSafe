@@ -3,7 +3,6 @@ package com.dankava.danno131313.drivesafe
 import android.Manifest
 import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
@@ -106,8 +105,6 @@ class HomeActivity : AppCompatActivity() {
                 "'client_id': '" + getText(R.string.client_id) + "', " +
                 "'client_secret': '" + getText(R.string.client_secret) + "' }")
 
-        Log.d("REFRESHTOKENJSON", jsonObj.toString())
-
         val tokenRequest = JsonObjectRequest(Request.Method.POST, url, jsonObj,
                 Response.Listener { response ->
                     val access_token = response.getString("access_token")
@@ -131,11 +128,11 @@ class HomeActivity : AppCompatActivity() {
         val dialog = AlertDialog.Builder(this)
         dialog.setTitle("Enable Location")
             .setMessage("Your Locations Settings is set to 'Off'.\nPlease Enable Location to " + "use this app")
-            .setPositiveButton("Open Location Settings", DialogInterface.OnClickListener { paramDialogInterface, paramInt ->
+            .setPositiveButton("Open Location Settings", { _, _ ->
                 val myIntent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
                 startActivity(myIntent)
             })
-            .setNegativeButton("Close App", DialogInterface.OnClickListener { paramDialogInterface, paramInt ->
+            .setNegativeButton("Close App", { _, _ ->
                 val intent = Intent(Intent.ACTION_MAIN)
                 intent.addCategory(Intent.CATEGORY_HOME)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
@@ -148,7 +145,7 @@ class HomeActivity : AppCompatActivity() {
         val dialog = AlertDialog.Builder(this)
         dialog.setTitle("SafeTrek Unreachable")
                 .setMessage("The SafeTrek API is currently unavailable.\nPlease try again soon.")
-                .setPositiveButton("OK", DialogInterface.OnClickListener { paramDialogInterface, paramInt ->
+                .setPositiveButton("OK", { _, _ ->
                     val intent = Intent(Intent.ACTION_MAIN)
                     intent.addCategory(Intent.CATEGORY_HOME)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK

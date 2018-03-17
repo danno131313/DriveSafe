@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">DriveSafe</string>
     <string name="cancel">Cancel</string>
+    <string name="timeRemaining">%1$d</string>
+    <string name="startButton">Enable DriveSafe</string>
+    <string name="app_desc">DriveSafe monitors your phone\'s sensors in the background,
+        allowing for quick response in the incident of a crash. You may close out of this app once enabled.</string>
 </resources>

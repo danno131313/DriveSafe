@@ -69,9 +69,8 @@ class SensorService : Service(), SensorEventListener {
         sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_GAME)
 
         // Build foreground notification (to enable running in "background")
-        var intent = Intent(applicationContext, DrivingActivity::class.java)
+        val intent = Intent(applicationContext, DrivingActivity::class.java)
         val requestID = System.currentTimeMillis().toInt()
-        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
         val pendingIntent: PendingIntent = PendingIntent.getActivity(this, requestID, intent, 0)
         val notification = NotificationCompat.Builder(applicationContext, "drivesafe")
                 .setContentTitle(getText(R.string.app_name))
