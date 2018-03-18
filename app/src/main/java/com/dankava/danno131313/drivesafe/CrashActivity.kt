@@ -37,6 +37,7 @@ class CrashActivity : AppCompatActivity() {
             runOnUiThread({
                 countDownTextView.text = "0"
                 crashButton.text = "Contacting SafeTrek..."
+                crashButton.isEnabled = false
 
                 val queue = Volley.newRequestQueue(baseContext)
                 val prefs = getSharedPreferences("drivesafe", Context.MODE_PRIVATE)
