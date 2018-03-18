@@ -21,9 +21,12 @@ class CrashActivity : AppCompatActivity() {
     lateinit private var vibrator: Vibrator
     lateinit private var alertNoise: MediaPlayer
     lateinit private var am: AudioManager
+
+    private val timerLength = 20 // seconds
+
     private var currVolume = 0
 
-    private var timer: CountDownTimer? = object: CountDownTimer(21000, 1000) {
+    private var timer: CountDownTimer? = object: CountDownTimer(((timerLength*1000) + 1000).toLong(), 1000) {
         override fun onTick(time: Long) {
             vibrator.vibrate(500)
             alertNoise.start()
