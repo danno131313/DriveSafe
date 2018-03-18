@@ -23,7 +23,7 @@ class CrashActivity : AppCompatActivity() {
     lateinit private var am: AudioManager
     private var currVolume = 0
 
-    private var timer: CountDownTimer? = object: CountDownTimer(30000, 1000) {
+    private var timer: CountDownTimer? = object: CountDownTimer(21000, 1000) {
         override fun onTick(time: Long) {
             vibrator.vibrate(500)
             alertNoise.start()
@@ -32,13 +32,16 @@ class CrashActivity : AppCompatActivity() {
 
         override fun onFinish() {
             runOnUiThread({
+                countDownTextView.text = "0"
+                crashButton.text = "Contacting SafeTrek..."
+
                 val queue = Volley.newRequestQueue(baseContext)
                 val prefs = getSharedPreferences("drivesafe", Context.MODE_PRIVATE)
 
                 val access_token = prefs.getString("access_token", null)
                 val url = "https://api-sandbox.safetrek.io/v1/alarms"
 
-                val crashLocation = getIntent().getParcelableExtra<Location>("crashLocation")
+                val crashLocation =intent.getParcelableExtra<Location>("crashLocation")
 
                 val lat = crashLocation.latitude
                 val lng = crashLocation.longitude
@@ -82,9 +85,7 @@ class CrashActivity : AppCompatActivity() {
 
         // Get audio manager and request focus on this app ONLY
         am = getSystemService(Context.AUDIO_SERVICE) as AudioManager
-        am.requestAudioFocus({
-            Log.d("SOMETHING", "SEOMTHING???")
-        }, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN)
+        am.requestAudioFocus({}, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN)
 
         // Record current volume, then set it to maximum
         currVolume = am.getStreamVolume(AudioManager.STREAM_MUSIC)

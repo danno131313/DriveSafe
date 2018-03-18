@@ -15,6 +15,7 @@
         android:background="@android:color/holo_red_dark"
         android:fontFamily="sans-serif"
         android:text="Crash Detected!"
+        android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:textSize="36sp"

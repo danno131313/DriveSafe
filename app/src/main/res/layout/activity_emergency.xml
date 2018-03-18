@@ -12,7 +12,7 @@
         android:layout_height="147dp"
         android:background="@android:color/holo_red_dark"
         android:gravity="center_vertical"
-        android:text="CONTACTING POLICE!"
+        android:text="ALARM ACTIVE"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         android:textColor="@android:color/white"
