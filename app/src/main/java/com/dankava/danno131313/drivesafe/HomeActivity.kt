@@ -25,26 +25,16 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // Request location permissions for app (should only happen first time using app)
-        if(checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED || checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION), 0)
-            finish()
-            startActivity(intent)
-        }
+        setContentView(R.layout.activity_home)
 
         locationManager = getSystemService(android.content.Context.LOCATION_SERVICE) as android.location.LocationManager
-
-        // Disallow use of app if no location services are enabled
-        if (!locationEnabled()) {
-            showLocationAlert()
-        }
 
         val prefs = getSharedPreferences("drivesafe", Context.MODE_PRIVATE)
 
         // If coming from authorization attempt, grab a new access token
         try {
-            val authCode = intent.getData().getQueryParameters("code")[0] // Fails if not coming from authorization webview
+            val authCode = intent.data.getQueryParameters("code")[0] // Fails if not coming from authorization webview
+            Log.d("AUTHCODE", authCode)
             getNewToken(prefs, authCode)
         } catch (e: Exception) {
 
@@ -52,10 +42,6 @@ class HomeActivity : AppCompatActivity() {
             refreshToken(prefs)
         }
 
-        setContentView(R.layout.activity_home)
-        drivingButton.setOnClickListener {
-            startDriving()
-        }
     }
 
     override fun onResume() {
@@ -66,6 +52,13 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun startDriving() {
+        // Request location permissions for app (should only happen first time using app)
+        if(checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED || checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION), 0)
+            finish()
+            startActivity(intent)
+        }
+
         if (locationEnabled()) {
             val intent = Intent(this, DrivingActivity::class.java)
             val service = Intent(this, SensorService::class.java)

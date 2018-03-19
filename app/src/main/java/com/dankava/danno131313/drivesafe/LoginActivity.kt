@@ -11,6 +11,7 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_login)
 
         val prefs = getSharedPreferences("drivesafe", Context.MODE_PRIVATE)
 
@@ -22,12 +23,10 @@ class LoginActivity : AppCompatActivity() {
             val redirect_uri = "redirect_uri=drivingmode://localhost:3000/callback"
 
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://account-sandbox.safetrek.io/authorize?" + audience + client_id + "response_type=code&" + scope + state + redirect_uri))
-            intent.putExtra("newToken", true)
             startActivity(intent)
             finish()
         } else {
             val intent = Intent(this, HomeActivity::class.java)
-            intent.putExtra("newToken", false)
             startActivity(intent)
             finish()
         }
