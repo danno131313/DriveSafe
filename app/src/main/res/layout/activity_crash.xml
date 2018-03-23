@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:background="@android:color/holo_red_dark"
-    tools:context="com.dankava.danno131313.drivesafe.CrashActivity">
+    tools:context="com.dankava13.safedrive.CrashActivity">
 
     <Button
         android:id="@+id/crashButton"
