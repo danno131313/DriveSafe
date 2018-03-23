@@ -73,7 +73,7 @@ class HomeActivity : AppCompatActivity() {
         val queue = Volley.newRequestQueue(this)
         val url = "https://login-sandbox.safetrek.io/oauth/token"
 
-        val jsonObj = JSONObject("{ 'grant_type': 'authorization_code', 'code': '" + authCode + "', " +
+        val jsonObj = JSONObject("{ 'grant_type': 'authorization_code', 'code': '$authCode', " +
                 "'client_id': '" + getText(R.string.client_id) + "', " +
                 "'client_secret': '" + getText(R.string.client_secret) + "', " +
                 "'redirect_uri': 'drivingmode://localhost:3000/callback' }")
@@ -100,7 +100,7 @@ class HomeActivity : AppCompatActivity() {
         val url = "https://login-sandbox.safetrek.io/oauth/token"
         val refresh_token = prefs.getString("refresh_token", null)
 
-        val jsonObj = JSONObject("{ 'grant_type': 'refresh_token', 'refresh_token': '" + refresh_token + "', " +
+        val jsonObj = JSONObject("{ 'grant_type': 'refresh_token', 'refresh_token': '$refresh_token', " +
                 "'client_id': '" + getText(R.string.client_id) + "', " +
                 "'client_secret': '" + getText(R.string.client_secret) + "' }")
 
@@ -126,7 +126,7 @@ class HomeActivity : AppCompatActivity() {
     private fun showLocationAlert() {
         val dialog = AlertDialog.Builder(this)
         dialog.setTitle("Enable Location")
-            .setMessage("Your Locations Settings is set to 'Off'.\nPlease Enable Location to " + "use this app")
+            .setMessage("Your Locations Settings is set to 'Off'.\nPlease Enable Location to use this app")
             .setPositiveButton("Open Location Settings", { _, _ ->
                 val myIntent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
                 startActivity(myIntent)

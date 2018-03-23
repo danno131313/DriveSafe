@@ -124,6 +124,4 @@ class CrashActivity : AppCompatActivity() {
     private fun startCrash() {
         timer?.start()
     }
-
-    fun test() {}
 }

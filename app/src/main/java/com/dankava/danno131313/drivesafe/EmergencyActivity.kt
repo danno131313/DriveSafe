@@ -30,7 +30,7 @@ class EmergencyActivity : AppCompatActivity() {
         val queue = Volley.newRequestQueue(baseContext)
         val prefs = getSharedPreferences("drivesafe", Context.MODE_PRIVATE)
         val access_token = prefs.getString("access_token", null)
-        val url = "https://api-sandbox.safetrek.io/v1/alarms/" + alarmId + "/status"
+        val url = "https://api-sandbox.safetrek.io/v1/alarms/$alarmId/status"
 
         val jsonObj = JSONObject("{ 'status': 'CANCELED' }")
 
@@ -43,9 +43,9 @@ class EmergencyActivity : AppCompatActivity() {
                 }
         ) {
             override fun getHeaders(): MutableMap<String, String> {
-                var headers = HashMap<String, String>()
+                val headers = HashMap<String, String>()
                 headers["Content-Type"] = "application/json"
-                headers["Authorization"] = "Bearer " + access_token
+                headers["Authorization"] = "Bearer $access_token"
                 return headers
             }
         }
