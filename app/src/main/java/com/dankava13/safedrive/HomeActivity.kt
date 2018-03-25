@@ -53,6 +53,10 @@ class HomeActivity : AppCompatActivity() {
         drivingButton.setOnClickListener {
             startDriving()
         }
+
+        disconnectButton.setOnClickListener {
+            disconnectSafetrek()
+        }
     }
 
     private fun startDriving() {
@@ -149,5 +153,16 @@ class HomeActivity : AppCompatActivity() {
                     finish()
                 })
         dialog.show()
+    }
+
+    private fun disconnectSafetrek() {
+        val prefs = getSharedPreferences("safedrive", Context.MODE_PRIVATE)
+        val editor = prefs.edit()
+        editor.remove("access_token").remove("refresh_token").apply()
+
+        val intent = Intent(baseContext, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(intent)
+        finish()
     }
 }

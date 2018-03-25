@@ -33,9 +33,14 @@ class CrashActivity : AppCompatActivity() {
         }
 
         override fun onFinish() {
+            tryRequest()
+        }
+
+        private fun tryRequest() {
             runOnUiThread({
-                countDownTextView.text = "0"
-                crashButton.text = "Contacting SafeTrek..."
+                countDownTextView.text = "Contacting SafeTrek..."
+                secondsTextView.text = ""
+                contactingTextView.text = ""
                 crashButton.isEnabled = false
 
                 val queue = Volley.newRequestQueue(baseContext)
@@ -51,8 +56,8 @@ class CrashActivity : AppCompatActivity() {
                 val accuracy = crashLocation.accuracy.toInt()
 
                 val jsonObj = JSONObject("{ " +
-                    "'location.coordinates': {'lat': $lat, 'lng': $lng, 'accuracy': $accuracy } " +
-                                              "}")
+                        "'location.coordinates': {'lat': $lat, 'lng': $lng, 'accuracy': $accuracy } " +
+                        "}")
 
                 val tokenRequest = object : JsonObjectRequest(Request.Method.POST, url, jsonObj,
                         Response.Listener { response ->

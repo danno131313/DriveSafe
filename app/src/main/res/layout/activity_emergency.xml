@@ -23,25 +23,51 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ng.max.slideview.SlideView
-        android:id="@+id/slideView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="228dp"
+        android:layout_height="54dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="136dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/safetrek_brand"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.263"
+        app:layout_constraintTop_toBottomOf="@+id/slideView"
+        app:layout_constraintVertical_bias="0.834" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="60dp"
+        android:text="Emergency services are on their way."
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <ng.max.slideview.SlideView
+        android:id="@+id/slideView"
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="112dp"
+        android:gravity="center_vertical|center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
         app:sv_animateSlideText="true"
-        app:sv_strokeColor="@android:color/black"
         app:sv_buttonBackgroundColor="@android:color/holo_orange_light"
         app:sv_buttonImage="@drawable/sv_ic_chevron_double_right"
         app:sv_slideBackgroundColor="@android:color/darker_gray"
         app:sv_slideText="@string/cancel"
-        app:sv_slideTextColor="@android:color/white" />
+        app:sv_slideTextColor="@android:color/white"
+        app:sv_strokeColor="@android:color/black" />
 
 </android.support.constraint.ConstraintLayout>
