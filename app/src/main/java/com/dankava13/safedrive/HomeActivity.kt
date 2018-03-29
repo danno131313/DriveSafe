@@ -144,25 +144,33 @@ class HomeActivity : AppCompatActivity() {
     private fun showAPIError() {
         val dialog = AlertDialog.Builder(this)
         dialog.setTitle("SafeTrek Unreachable")
-                .setMessage("The SafeTrek API is currently unavailable.\nPlease try again soon.")
-                .setPositiveButton("OK", { _, _ ->
-                    val intent = Intent(Intent.ACTION_MAIN)
-                    intent.addCategory(Intent.CATEGORY_HOME)
-                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                    startActivity(intent)
-                    finish()
-                })
+            .setMessage("The SafeTrek API is currently unavailable.\nPlease try again soon.")
+            .setPositiveButton("OK", { _, _ ->
+                val intent = Intent(Intent.ACTION_MAIN)
+                intent.addCategory(Intent.CATEGORY_HOME)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
+                finish()
+            })
         dialog.show()
     }
 
     private fun disconnectSafetrek() {
-        val prefs = getSharedPreferences("safedrive", Context.MODE_PRIVATE)
-        val editor = prefs.edit()
-        editor.remove("access_token").remove("refresh_token").apply()
+        val dialog = AlertDialog.Builder(this)
+        dialog.setTitle("Disconnect SafeTrek")
+            .setMessage("Are you sure you want to disconnect\nyour SafeTrek account?")
+            .setPositiveButton("Yes", { _, _ ->
+                val prefs = getSharedPreferences("safedrive", Context.MODE_PRIVATE)
+                val editor = prefs.edit()
+                editor.remove("access_token").remove("refresh_token").apply()
 
-        val intent = Intent(baseContext, LoginActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-        startActivity(intent)
-        finish()
+                val intent = Intent(baseContext, LoginActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                startActivity(intent)
+                finish()
+            })
+            .setNegativeButton("No", { _, _ ->
+            })
+        dialog.show()
     }
 }
