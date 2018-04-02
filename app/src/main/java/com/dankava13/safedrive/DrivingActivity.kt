@@ -3,9 +3,11 @@ package com.dankava13.safedrive
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
@@ -48,7 +50,7 @@ class DrivingActivity : AppCompatActivity() {
     private fun sendCrashReport() {
         val locationManager = getSystemService(android.content.Context.LOCATION_SERVICE) as android.location.LocationManager
 
-        val locationProvider: String;
+        val locationProvider: String
         val enabledProviders = locationManager.getProviders(true)
 
         if(enabledProviders.contains(LocationManager.GPS_PROVIDER)) {
@@ -58,6 +60,7 @@ class DrivingActivity : AppCompatActivity() {
         }
 
         val crashLocation = locationManager.getLastKnownLocation(locationProvider) // Permission is already checked
+
         val queue = Volley.newRequestQueue(baseContext)
         val prefs = getSharedPreferences("safedrive", Context.MODE_PRIVATE)
 
@@ -89,6 +92,8 @@ class DrivingActivity : AppCompatActivity() {
                 return headers
             }
         }
+
+        tokenRequest.retryPolicy = DefaultRetryPolicy(7000, 10, 0.toFloat())
 
         queue.add(tokenRequest)
     }

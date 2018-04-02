@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Vibrator
 import android.support.v7.app.AppCompatActivity
+import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
@@ -66,7 +67,7 @@ class CrashActivity : AppCompatActivity() {
                             intent.putExtra("crashLocation", crashLocation)
                             startActivity(intent)
                         },
-                        Response.ErrorListener { error ->
+                        Response.ErrorListener { _ ->
                         }
                 ) {
                     override fun getHeaders(): MutableMap<String, String> {
@@ -76,6 +77,8 @@ class CrashActivity : AppCompatActivity() {
                         return headers
                     }
                 }
+
+                tokenRequest.retryPolicy = DefaultRetryPolicy(7000, 10, 0.toFloat())
 
                 queue.add(tokenRequest)
             })

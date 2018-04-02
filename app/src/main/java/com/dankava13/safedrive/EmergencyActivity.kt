@@ -5,6 +5,7 @@ import android.content.Intent
 import android.location.Location
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
@@ -26,6 +27,7 @@ class EmergencyActivity : AppCompatActivity() {
     }
 
     private fun cancelAlarm() {
+        slideView.isEnabled = false
         val queue = Volley.newRequestQueue(baseContext)
         val prefs = getSharedPreferences("safedrive", Context.MODE_PRIVATE)
         val access_token = prefs.getString("access_token", null)
@@ -34,9 +36,12 @@ class EmergencyActivity : AppCompatActivity() {
         val jsonObj = JSONObject("{ 'status': 'CANCELED' }")
 
         val tokenRequest = object : JsonObjectRequest(Request.Method.PUT, url, jsonObj,
-                Response.Listener { response ->
+                Response.Listener { _ ->
+                    val intent = Intent(this, HomeActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    startActivity(intent)
                 },
-                Response.ErrorListener { error ->
+                Response.ErrorListener { _ ->
                 }
         ) {
             override fun getHeaders(): MutableMap<String, String> {
@@ -47,10 +52,8 @@ class EmergencyActivity : AppCompatActivity() {
             }
         }
 
-        queue.add(tokenRequest)
+        tokenRequest.retryPolicy = DefaultRetryPolicy(7000, 10, 0.toFloat())
 
-        val intent = Intent(this, HomeActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        startActivity(intent)
+        queue.add(tokenRequest)
     }
 }

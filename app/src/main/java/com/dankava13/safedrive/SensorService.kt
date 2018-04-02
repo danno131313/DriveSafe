@@ -17,8 +17,8 @@ import android.support.v4.app.NotificationCompat
 
 
 class SensorService : Service(), SensorEventListener {
-    // Minimum (m/s^2) of acceleration to register as crash (any direction)
-    private val threshold = 45
+    // Minimum amount of acceleration to register as crash (any direction)
+    private val threshold = 50 // m/s^2
 
     // This is the value of whether or not the sensor threshold has been reached
     private var triggered = false
