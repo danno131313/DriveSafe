@@ -77,7 +77,7 @@ class SensorService : Service(), SensorEventListener {
         val pendingIntent: PendingIntent = PendingIntent.getActivity(this, requestID, intent, 0)
         val notification = NotificationCompat.Builder(applicationContext, "safedrive")
                 .setContentTitle(getText(R.string.app_name))
-                .setContentText("DriveSafe is currently monitoring your safety.")
+                .setContentText("SafeDrive is currently monitoring your safety.")
                 .setSmallIcon(R.drawable.steeringwheel)
                 .setContentIntent(pendingIntent)
                 .setPriority(NotificationCompat.PRIORITY_LOW)

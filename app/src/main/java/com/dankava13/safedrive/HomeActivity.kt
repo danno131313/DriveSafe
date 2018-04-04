@@ -78,7 +78,7 @@ class HomeActivity : AppCompatActivity() {
         val jsonObj = JSONObject("{ 'grant_type': 'authorization_code', 'code': '$authCode', " +
                 "'client_id': '" + getText(R.string.client_id) + "', " +
                 "'client_secret': '" + getText(R.string.client_secret) + "', " +
-                "'redirect_uri': 'drivingmode://localhost:3000/callback' }")
+                "'redirect_uri': 'safedrive://localhost:3000/callback' }")
 
         val tokenRequest = JsonObjectRequest(Request.Method.POST, url, jsonObj,
                 Response.Listener { response ->
@@ -88,7 +88,7 @@ class HomeActivity : AppCompatActivity() {
                             .putString("refresh_token", refresh_token)
                             .apply()
                 },
-                Response.ErrorListener { error ->
+                Response.ErrorListener { _ ->
                     showAPIError()
                 }
         )

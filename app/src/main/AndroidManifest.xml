@@ -42,7 +42,7 @@
                     android:host="localhost"
                     android:path="/callback"
                     android:port="3000"
-                    android:scheme="drivingmode" />
+                    android:scheme="safedrive" />
             </intent-filter>
         </activity>
         <activity
