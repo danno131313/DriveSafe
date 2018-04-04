@@ -124,7 +124,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun showLocationAlert() {
-        val dialog = AlertDialog.Builder(this)
+        val dialog = AlertDialog.Builder(this, R.style.Theme_AppCompat_Light_Dialog_Alert)
         dialog.setTitle("Enable Location")
             .setMessage("Your Locations Settings is set to 'Off'.\nPlease Enable Location to use this app")
             .setPositiveButton("Open Location Settings", { _, _ ->
@@ -142,7 +142,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun showAPIError() {
-        val dialog = AlertDialog.Builder(this)
+        val dialog = AlertDialog.Builder(this, R.style.Theme_AppCompat_Light_Dialog_Alert)
         dialog.setTitle("SafeTrek Unreachable")
             .setMessage("The SafeTrek API is currently unavailable.\nPlease try again soon.")
             .setPositiveButton("OK", { _, _ ->
@@ -156,7 +156,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun disconnectSafetrek() {
-        val dialog = AlertDialog.Builder(this)
+        val dialog = AlertDialog.Builder(this, R.style.Theme_AppCompat_Light_Dialog_Alert)
         dialog.setTitle("Disconnect SafeTrek")
             .setMessage("Are you sure you want to disconnect\nyour SafeTrek account?")
             .setPositiveButton("Yes", { _, _ ->

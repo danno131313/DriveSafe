@@ -25,7 +25,7 @@ class DrivingActivity : AppCompatActivity() {
         }
 
         emergencyButton.setOnClickListener {
-            val dialog = AlertDialog.Builder(this)
+            val dialog = AlertDialog.Builder(this, R.style.Theme_AppCompat_Light_Dialog_Alert)
             dialog.setTitle("Send Emergency Services")
                 .setMessage("This will send your location and contact SafeTrek\nto send emergency services.\nAre you sure?")
                 .setPositiveButton("Yes", { _, _ ->
