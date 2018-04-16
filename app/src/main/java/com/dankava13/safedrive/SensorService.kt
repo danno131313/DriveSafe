@@ -1,5 +1,6 @@
 package com.dankava13.safedrive
 
+import android.app.NotificationManager
 import android.app.PendingIntent
 import android.app.Service
 import android.content.Context
@@ -13,12 +14,17 @@ import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
 import android.os.IBinder
+import android.os.Build
 import android.support.v4.app.NotificationCompat
+import android.R.attr.name
+import android.app.NotificationChannel
+
+
 
 
 class SensorService : Service(), SensorEventListener {
     // Minimum amount of acceleration to register as crash (any direction)
-    private val threshold = 50 // m/s^2
+    private val threshold = 45 // m/s^2
 
     // This is the value of whether or not the sensor threshold has been reached
     private var triggered = false
@@ -78,11 +84,18 @@ class SensorService : Service(), SensorEventListener {
         val notification = NotificationCompat.Builder(applicationContext, "safedrive")
                 .setContentTitle(getText(R.string.app_name))
                 .setContentText("SafeDrive is currently monitoring your safety.")
-                .setSmallIcon(R.drawable.steeringwheel)
+                .setSmallIcon(R.drawable.ic_status_icon)
                 .setContentIntent(pendingIntent)
                 .setPriority(NotificationCompat.PRIORITY_LOW)
                 .setAutoCancel(true)
                 .build()
+
+        if (Build.VERSION.SDK_INT >= 26) {
+            val mChannel = NotificationChannel("safedrive", "SafeDrive", NotificationManager.IMPORTANCE_LOW)
+            val mNotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            mNotificationManager.createNotificationChannel(mChannel)
+        }
+
         startForeground(1, notification)
     }
 
